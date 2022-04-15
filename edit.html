@@ -89,7 +89,7 @@
     window.location.assign("note?id=" + id);
   }
   
-  function delete() {
+  function deleteNote() {
     num = getCookie(id + "num");
     deleteCookie(id + "name");
     deleteCookie(id + "contents");
@@ -115,7 +115,7 @@
     <br><br><br>
     <input type="button" value="Save note" onclick="save();">
   </center>
-  <div class="qqqqq"><a class="smol" href="javascript:delete();" style="color: black;">Delete</a></div>
+  <div class="qqqqq"><a class="smol" href="javascript:deleteNote();" style="color: black;">Delete</a></div>
   <hr>
 </div>
 

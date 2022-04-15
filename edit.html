@@ -123,7 +123,7 @@
   function getContents() {
     id = window.location.search.substring(4);
     noteContents = getCookie(id + "contents");
-    document.getElementById("ok").value = noteContents;
+    document.getElementById("ok").value = noteContents.replaceAll("^lb^", "\n");
     noteName = getCookie(id + "name");
     document.getElementById("nameInput").value = noteName;
   }

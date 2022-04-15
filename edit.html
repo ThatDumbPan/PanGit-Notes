@@ -44,6 +44,8 @@
   var noteContents;
   var noteName;
   var num;
+  var temp1 = getCookie("numOfNotes");
+  var numOfNotes = parseInt(temp1);
   
   function moveObj() {
     var main = document.getElementById("main");
@@ -95,6 +97,8 @@
     deleteCookie(id + "contents");
     deleteCookie(id + "num");
     deleteCookie(num + "id");
+    
+    setCookie("numOfNotes", numOfNotes - 1);
     
     window.location.assign("/");
   }

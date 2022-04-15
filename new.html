@@ -1,0 +1,102 @@
+<script type="text/javascript" src="https://staff.washington.edu/tabrooks/343INFO/JSMotionTween/Tween.js"></script>
+
+<style type="text/css">
+  * {
+    font-family: sans-serif;
+  }
+  
+  .smol {
+    font-size: 11px;
+    margin-top: -1px;
+  }
+  
+  .main {
+    width: 50%;
+  }
+  
+  .eeeee {
+    width: 80%;
+  }
+  
+  hr {
+    border-style: solid;
+    margin-left: 0px;
+  }
+  
+  h1 {
+    margin-top: 0px;
+  }
+</style>
+
+<script type="text/javascript">
+  var temp1 = Math.random();
+  var temp2 = temp1.toString();
+  var id = temp2.substring(2);
+  var name;
+  var temp3 = getCookie("numOfNotes");
+  var latest = Number(temp3);
+  var num = latest + 1;
+  
+  function moveObj() {
+    var main = document.getElementById("main");
+    var tween = new Tween(main.style, 'left', Tween.regularEaseOut, 950, 0, 0.2, 'px');
+    tween.start();
+  }
+  
+  window.onload = function funLoad() {
+    moveObj();
+  }
+  
+  function setCookie(cname, cvalue) {
+    document.cookie = cname + "=" + cvalue + ";path=/";
+  }
+  
+  function deleteCookie(cname) {
+    document.cookie = cname + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/";
+  }
+  
+  function getCookie(cname) {
+    var name = cname + "=";
+    var decodedCookie = decodeURIComponent(document.cookie);
+    var ca = decodedCookie.split(';');
+    for(var i = 0; i <ca.length; i++) {
+      var c = ca[i];
+      while (c.charAt(0) == ' ') {
+        c = c.substring(1);
+      }
+      if (c.indexOf(name) == 0) {
+        return c.substring(name.length, c.length);
+      }
+    }
+    return "";
+  }
+  
+  function create() {
+    name = document.getElementById("nameInput").value;
+    
+    setCookie(id + "name", name);
+    setCookie(id + "contents", "");
+    setCookie("numOfNotes", latest + 1);
+    latest = latest + 1;
+    setCookie("numOfNotes", latest);
+    setCookie(num + "id", id);
+    
+    window.location.assign("note?id=" + id);
+  }
+</script>
+
+<div id="main" class="main" style="position: relative; left: 0px;">
+  <hr>
+  <a class="smol" href="/" style="color: black;">Cancel</a>
+  
+  <br>
+  <center>
+    <h1>New note</h1>
+    <br>
+    Name: <input class="eeeee" id="nameInput">
+    <br><br><br>
+    <input type="button" value="Create new note" onclick="create();">
+  </center>
+  <br>&nbsp;
+  <hr>
+</div>

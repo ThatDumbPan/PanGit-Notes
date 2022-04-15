@@ -1,0 +1,89 @@
+<style type="text/css">
+  * {
+    font-family: sans-serif;
+  }
+  
+  hr {
+    border-style: solid;
+    margin-left: 0px;
+  }
+  
+  .smol {
+    font-size: 11px;
+    margin-top: -1px;
+  }
+  
+  .main {
+    width: 50%;
+  }
+  
+  .aaaaa {
+    width: 100%;
+    height: 350px;
+  }
+</style>
+
+<script type="text/javascript" src="https://staff.washington.edu/tabrooks/343INFO/JSMotionTween/Tween.js"></script>
+
+<script type="text/javascript">
+  var id;
+  var noteContents;
+  
+  function moveObj() {
+    var main = document.getElementById("main");
+    var tween = new Tween(main.style, 'left', Tween.regularEaseOut, 950, 0, 0.2, 'px');
+    tween.start();
+  }
+  
+  window.onload = function funLoad() {
+    moveObj();
+  }
+  
+  function setCookie(cname, cvalue) {
+    document.cookie = cname + "=" + cvalue + ";path=/";
+  }
+  
+  function deleteCookie(cname) {
+    document.cookie = cname + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/";
+  }
+  
+  function getCookie(cname) {
+    var name = cname + "=";
+    var decodedCookie = decodeURIComponent(document.cookie);
+    var ca = decodedCookie.split(';');
+    for(var i = 0; i <ca.length; i++) {
+      var c = ca[i];
+      while (c.charAt(0) == ' ') {
+        c = c.substring(1);
+      }
+      if (c.indexOf(name) == 0) {
+        return c.substring(name.length, c.length);
+      }
+    }
+    return "";
+  }
+</script>
+
+<div id="main" class="main" style="position: relative; left: 0px;">
+  <hr>
+  <a href="/" class="smol" style="color: black;">Back</a>
+  <center>
+    <br>
+    <textarea id="aaaaa" class="aaaaa" readonly></textarea>
+  </center>
+  <div style="text-align: right;" id="aaaaajjjjj"></div>
+  <br>
+  <hr>
+</div>
+
+<script>
+  getContents();
+  
+  function getContents() {
+    id = window.location.search.substring(4);
+    noteContents = getCookie(id + "contents");
+    document.getElementById("aaaaa").value = noteContents;
+  }
+  
+  document.getElementById("aaaaajjjjj").innerHTML = "<a href='edit?id=" + id + "' class='smol' style='color: black;'>Edit</a>";
+</script>

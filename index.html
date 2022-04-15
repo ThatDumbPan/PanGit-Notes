@@ -1,0 +1,87 @@
+<script type="text/javascript" src="https://staff.washington.edu/tabrooks/343INFO/JSMotionTween/Tween.js"></script>
+
+<script type="text/javascript">
+  var numOfNotes = getCookie("numOfNotes");
+  var keepGoing = 1;
+  var notesLeft = getCookie("numOfNotes");
+  var currentNote = 1;
+  var currentNoteId;
+  var currentNoteName;
+  var currentNoteContents;
+  
+  function moveObj() {
+    var notes = document.getElementById("notes");
+    var tween = new Tween(notes.style, 'left', Tween.regularEaseOut, 950, 0, 0.2, 'px');
+    tween.start();
+  }
+  
+  window.onload = function funLoad() {
+    moveObj();
+  }
+  
+  function setCookie(cname, cvalue) {
+    document.cookie = cname + "=" + cvalue + ";path=/";
+  }
+  
+  function deleteCookie(cname) {
+    document.cookie = cname + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/";
+  }
+  
+  function getCookie(cname) {
+    var name = cname + "=";
+    var decodedCookie = decodeURIComponent(document.cookie);
+    var ca = decodedCookie.split(';');
+    for(var i = 0; i <ca.length; i++) {
+      var c = ca[i];
+      while (c.charAt(0) == ' ') {
+        c = c.substring(1);
+      }
+      if (c.indexOf(name) == 0) {
+        return c.substring(name.length, c.length);
+      }
+    }
+    return "";
+  }
+  
+  if (numOfNotes === "") {
+    setCookie("numOfNotes", 0);
+  }
+</script>
+
+<style type="text/css">
+  * {
+    font-family: sans-serif;
+  }
+  
+  hr {
+    border-style: solid;
+    width: 50%;
+    margin-left: 0px;
+  }
+</style>
+
+<div id="notes" style="position: relative; left: 0px;">
+  <div id="noNew">
+    
+  </div>
+  <hr>
+  <a href="new" style="color: black; text-decoration: none;"><img src="/new.png"> New</a>
+  <hr>
+</div>
+
+<script type="text/javascript">
+  updateNotes();
+  
+  function updateNotes() {
+    if (currentNote - 1 != numOfNotes) {
+      currentNoteId = getCookie(currentNote + "id");
+      currentNoteName = getCookie(currentNoteId + "name");
+      // alert(currentNoteName + " " + currentNote + " " + numOfNotes);
+      document.getElementById("noNew").innerHTML = document.getElementById("noNew").innerHTML + "<hr><a href='note?id=" + currentNoteId + "' style='color: black; text-decoration: none;'>" + currentNoteName + "</a>";
+      currentNote = currentNote + 1;
+      updateNotes();
+    }
+  }
+</script>
+
+<!-- <input type="button" onclick="moveObj();"> -->

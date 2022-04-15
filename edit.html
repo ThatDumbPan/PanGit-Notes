@@ -106,7 +106,7 @@
 
 <div id="main" class="main" style="position: relative; left: 0px;">
   <hr>
-  <a class="smol" href="/" style="color: black;">Cancel</a>
+  <div id="l"></div>
   <br>
   <center>
     <h1>Edit note</h1>
@@ -133,4 +133,6 @@
     noteName = getCookie(id + "name");
     document.getElementById("nameInput").value = noteName;
   }
+  
+  document.getElementById("l").innerHTML = "<a class='smol' href='note?id=" + id + "' style='color: black;'>Cancel</a>";
 </script>

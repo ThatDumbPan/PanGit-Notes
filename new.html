@@ -80,6 +80,7 @@
     latest = latest + 1;
     setCookie("numOfNotes", latest);
     setCookie(num + "id", id);
+    setCookie(id + "num", num);
     
     window.location.assign("note?id=" + id);
   }

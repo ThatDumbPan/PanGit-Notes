@@ -31,6 +31,10 @@
     width: 80%;
     height: 150px;
   }
+  
+  .qqqqq {
+    text-align: right;
+  }
 </style>
 
 <script type="text/javascript">
@@ -39,6 +43,7 @@
   var newName;
   var noteContents;
   var noteName;
+  var num;
   
   function moveObj() {
     var main = document.getElementById("main");
@@ -83,12 +88,21 @@
     
     window.location.assign("note?id=" + id);
   }
+  
+  function delete() {
+    num = getCookie(id + "num");
+    deleteCookie(id + "name");
+    deleteCookie(id + "contents");
+    deleteCookie(id + "num");
+    deleteCookie(num + "id");
+    
+    window.location.assign("/");
+  }
 </script>
 
 <div id="main" class="main" style="position: relative; left: 0px;">
   <hr>
   <a class="smol" href="/" style="color: black;">Cancel</a>
-  
   <br>
   <center>
     <h1>Edit note</h1>
@@ -101,7 +115,7 @@
     <br><br><br>
     <input type="button" value="Save note" onclick="save();">
   </center>
-  <br>&nbsp;
+  <div class="qqqqq"><a class="smol" href="javascript:delete();" style="color: black;">Delete</a></div>
   <hr>
 </div>
 

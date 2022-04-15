@@ -83,7 +83,7 @@
   
   function save() {
     newName = document.getElementById("nameInput").value;
-    newContents = document.getElementById("ok").value;
+    newContents = document.getElementById("ok").value.replaceAll("\n", "^lb^");
     
     setCookie(id + "name", newName);
     setCookie(id + "contents", newContents);

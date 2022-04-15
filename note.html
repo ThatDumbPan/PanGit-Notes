@@ -81,7 +81,7 @@
   function getContents() {
     id = window.location.search.substring(4);
     noteContents = getCookie(id + "contents");
-    document.getElementById("aaaaa").value = noteContents;
+    document.getElementById("aaaaa").value = noteContents.replaceAll("^lb^", "\n");
   }
   
   document.getElementById("aaaaajjjjj").innerHTML = "<a href='edit?id=" + id + "' class='smol' style='color: black;'>Edit</a>";

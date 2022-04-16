@@ -11,8 +11,8 @@
   var currentNoteActive;
   
   function moveObj() {
-    var main = document.getElementById("main");
-    var tween = new Tween(main.style, 'left', Tween.regularEaseOut, 950, 0, 0.2, 'px');
+    var notes = document.getElementById("notes");
+    var tween = new Tween(notes.style, 'left', Tween.regularEaseOut, 950, 0, 0.2, 'px');
     tween.start();
   }
   

@@ -10,13 +10,13 @@
   var currentNoteContents;
   var currentNoteActive;
   
+  moveObj();
+  
   function moveObj() {
     var notes = document.getElementById("notes");
     var tween = new Tween(notes.style, 'left', Tween.regularEaseOut, 950, 0, 0.2, 'px');
     tween.start();
   }
-  
-  moveObj();
   
   function setCookie(cname, cvalue) {
     document.cookie = cname + "=" + cvalue + ";path=/";

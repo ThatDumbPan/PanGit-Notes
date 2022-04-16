@@ -98,7 +98,7 @@
   }
 </script>
 
-<title>Edit note - PanGit Notes</title>
+<title id="title"></title>
 
 <div id="main" class="main" style="position: relative; left: 0px;">
   <hr>
@@ -135,4 +135,6 @@
   if (id === "") {
     window.location.replace("/");
   }
+ 
+  document.getElementById("title").innerHTML = "Edit " + noteName + " - PanGit Notes";
 </script>

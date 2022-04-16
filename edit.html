@@ -88,7 +88,7 @@
     setCookie(id + "name", newName);
     setCookie(id + "contents", newContents);
     
-    window.location.assign("note?id=" + id);
+    window.location.replace("note?id=" + id);
   }
   
   function deleteNote() {

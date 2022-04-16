@@ -86,6 +86,10 @@
     document.getElementById("aaaaa").value = noteContents.replaceAll("^lb^", "\n");
   }
   
+  if (id === "") {
+    window.location.replace("/");
+  }
+  
   document.getElementById("aaaaajjjjj").innerHTML = "<a href='edit?id=" + id + "' class='smol' style='color: black;'>Edit</a>";
   document.getElementById("ffffffffff").innerHTML = "<title>" + getCookie(id + "name") + " - PanGit Notes</title>";
 </script>

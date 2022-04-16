@@ -10,10 +10,6 @@
   var currentNoteContents;
   var currentNoteActive;
   
-  var notes = document.getElementById("notes");
-  var tween = new Tween(notes.style, 'left', Tween.regularEaseOut, 950, 0, 0.2, 'px');
-  tween.start();
-  
   function setCookie(cname, cvalue) {
     document.cookie = cname + "=" + cvalue + ";path=/";
   }
@@ -67,6 +63,14 @@
 </div>
 
 <script type="text/javascript">
+  moveObj();
+  
+  function moveObj() {
+    var main = document.getElementById("main");
+    var tween = new Tween(main.style, 'left', Tween.regularEaseOut, 950, 0, 0.2, 'px');
+    tween.start();
+  }
+  
   updateNotes();
   
   function updateNotes() {

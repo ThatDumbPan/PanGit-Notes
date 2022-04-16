@@ -131,4 +131,8 @@
   }
   
   document.getElementById("l").innerHTML = "<a class='smol' href='note?id=" + id + "' style='color: black;'>Cancel</a>";
+  
+  if (id === "") {
+    window.location.replace("/");
+  }
 </script>
